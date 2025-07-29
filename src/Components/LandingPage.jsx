@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import styles from './LandingPage.module.css';
 
+import { FaAndroid, FaApple, FaDesktop, FaBrain, FaComments, FaChartBar, FaSun, FaLink, FaBullseye, FaDownload } from 'react-icons/fa';
+import { FiMenu, FiX } from 'react-icons/fi';
+
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
@@ -35,7 +38,7 @@ const Header = () => {
                     aria-expanded={isMenuOpen}
                     onClick={toggleMenu}
                 >
-                    {isMenuOpen ? '✕' : '☰'}
+                    {isMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
                 </button>
             </nav>
             <div className={`${styles.mobileMenu} ${isMenuOpen ? styles.active : ''}`}>
@@ -73,7 +76,7 @@ const PlatformCard = ({ type, icon, title, description, buttonText, onClick }) =
             <h3>{title}</h3>
             <p>{description}</p>
             <a href="#" className={`${styles.downloadBtn} ${styles[type]}`} aria-label={`Download Olyxee for ${title}`}>
-                ⬇ {buttonText}
+                <FaDownload style={{ marginRight: 8 }} /> {buttonText}
             </a>
         </div>
     );
@@ -117,21 +120,21 @@ const App = () => {
     const platformCards = [
         {
             type: 'android',
-            icon: '📱',
+            icon: <FaAndroid size={40} color="#4caf50" />,
             title: 'Android',
             description: 'Get it on Google Play',
             buttonText: 'Download',
         },
         {
             type: 'desktop',
-            icon: '🖥️',
+            icon: <FaDesktop size={40} color="#667eea" />,
             title: 'Desktop',
             description: 'Try the web version',
             buttonText: 'Launch App',
         },
         {
             type: 'ios',
-            icon: '🍎',
+            icon: <FaApple size={40} color="#000000" />,
             title: 'iOS',
             description: 'Download on App Store',
             buttonText: 'Download',
@@ -140,37 +143,37 @@ const App = () => {
 
     const features = [
         {
-            icon: '🧠',
+            icon: <FaBrain size={36} color="white" />,
             title: 'Emotional Intelligence',
             description: 'Olyxee understands your mood and emotional state, adapting its responses to provide the support you need each morning.',
             delay: 0,
         },
         {
-            icon: '💬',
+            icon: <FaComments size={36} color="white" />,
             title: 'Natural Conversations',
             description: 'Have meaningful conversations with your AI assistant that remembers context and builds understanding over time.',
             delay: 0.2,
         },
         {
-            icon: '📊',
+            icon: <FaChartBar size={36} color="white" />,
             title: 'Life Summarization',
             description: 'Get intelligent summaries of your schedule, priorities, and important updates to start each day with clarity and focus.',
             delay: 0.4,
         },
         {
-            icon: '🌅',
+            icon: <FaSun size={36} color="white" />,
             title: 'Morning Optimization',
             description: 'Personalized morning routines and insights that help you begin each day feeling prepared and motivated.',
             delay: 0.6,
         },
         {
-            icon: '🔗',
+            icon: <FaLink size={36} color="white" />,
             title: 'Smart Integration',
             description: 'Seamlessly connects with your calendar, tasks, and apps to provide comprehensive life management.',
             delay: 0.8,
         },
         {
-            icon: '🎯',
+            icon: <FaBullseye size={36} color="white" />,
             title: 'Goal Tracking',
             description: 'Track your progress on personal and professional goals with intelligent insights and motivation.',
             delay: 1.0,
